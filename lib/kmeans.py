@@ -7,7 +7,7 @@ class Kmeans:
         self.k = k
         self.data = data
         self.centroids = np.empty((self.k, self.data.shape[1]))
-        self.clusters = np.empty((self.k, 0, self.data.shape[1]))
+        self.clusters = [[] for _ in range(self.k)]
 
     def init_centroids(self, centroids=None):
         if centroids is not None:
@@ -77,7 +77,7 @@ class Kmeans:
             cost = new_cost
 
 if __name__ == '__main__':
-    data = [[1, 1], [1, 2], [2, 1], [2, 2], [3, 3], [3, 4], [4, 3], [4, 4]]
+    data = np.array([[1, 1], [1, 2], [2, 1], [2, 2], [3, 3], [3, 4], [4, 3], [4, 4]])
     kmeans = Kmeans(2, data)
     kmeans.run()
     print(kmeans.clusters)
