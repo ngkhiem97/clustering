@@ -1,7 +1,11 @@
 # Clustering
-Implementation and analysis of k-means and spectral clustering with simulation and real-world datasets:
+Correct mplementation and analysis of K-means and Spectral Clustering methods from scratch with:
 
 - Simulation Datasets: simulated square and elliptical datasets.
 - Real-world Datasets: Cho and Iyer gene sequensces datasets.
 
-hi
+## Simulation Datasets
+
+![Simulation Datasets](imgs/sim_data.png)
+
+## Real-world Datasets
