@@ -2,7 +2,7 @@ import numpy as np
 from .kmeans import Kmeans
 
 class SpectralClustering:
-    def __init__(self, k, data, similarity='cosine', sigma=1.0):
+    def __init__(self, k, data, similarity='gaussian', sigma=1.0):
         self.k = k
         self.data = data
         self.similarity = similarity
