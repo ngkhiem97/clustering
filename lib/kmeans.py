@@ -6,14 +6,17 @@ class Kmeans:
     def __init__(self, k, data):
         self.k = k
         self.data = data
-        self.centroids = np.empty((self.k, self.data.shape[1]))
-        self.clusters = [[] for _ in range(self.k)]
+        self.ndim = data.shape[1]
+        self.centroids = []
+        self.clusters = []
+        self.labels = []
 
     def init_centroids(self, centroids=None):
         if centroids is not None:
             self.centroids = centroids
             return
         for i in range(self.k):
+            self.centroids.append([])
             self.centroids[i] = self.data[np.random.choice(range(self.data.shape[0]))]
 
     def init_clusters(self):
@@ -39,9 +42,11 @@ class Kmeans:
     def update_clusters(self):
         for i in range(self.k):
             self.clusters[i] = []
+        self.labels = []
         for point in self.data:
             index = self.get_closest_centroid(point)
             self.clusters[index].append(point)
+            self.labels.append(index)
 
     def update_centroids(self):
         for i in range(self.k):
@@ -63,8 +68,8 @@ class Kmeans:
                 cost += self.get_distance(point, self.centroids[i]) ** 2
         return cost
 
-    def run(self):
-        self.init_centroids()
+    def run(self, centroids=None):
+        self.init_centroids(centroids)
         self.init_clusters()
         self.update_clusters()
         cost = self.get_cost()
@@ -75,9 +80,3 @@ class Kmeans:
             if new_cost >= cost:
                 break
             cost = new_cost
-
-if __name__ == '__main__':
-    data = np.array([[1, 1], [1, 2], [2, 1], [2, 2], [3, 3], [3, 4], [4, 3], [4, 4]])
-    kmeans = Kmeans(2, data)
-    kmeans.run()
-    print(kmeans.clusters)
