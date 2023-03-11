@@ -1,5 +1,5 @@
 # Clustering
-Correct mplementation and analysis of K-means and Spectral Clustering methods from scratch with:
+Fresh implementation and analysis of K-means and Spectral Clustering methods with:
 
 - Simulation Datasets: simulated square and elliptical datasets.
 - Real-world Datasets: Cho and Iyer gene sequensces datasets.
